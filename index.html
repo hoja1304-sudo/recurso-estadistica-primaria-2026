@@ -6,6 +6,8 @@
 .author{display:inline-flex;align-items:center;gap:10px;margin-top:18px;padding:9px 16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);border-radius:999px}.author .av{width:32px;height:32px;border-radius:50%;background:var(--coral);color:#fff;display:grid;place-items:center;font-weight:bold;font-size:13px;flex:none}.author .tx{line-height:1.25;font-size:13px;color:#e7f3f1}.author b{display:block;color:#fff;font-size:13px}
 .section{max-width:1080px;margin:auto;padding:52px 24px}.title{display:flex;gap:15px;align-items:center;margin-bottom:24px}.title>span{background:var(--coral);color:#fff;border-radius:50%;padding:11px;font-weight:bold;flex:none}.title small{color:var(--blue);font-weight:bold;letter-spacing:2px}.title h2{font-size:clamp(22px,4vw,36px);margin:4px 0}.note{background:var(--aqua);border-left:6px solid #37a88f;padding:20px;border-radius:0 12px 12px 0;font-size:clamp(14px,2vw,17px);line-height:1.55;margin-bottom:22px}.note b{color:var(--navy)}
 .defs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:20px 0}.defs div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:0 5px #dbe9e6}.defs h4{margin:0 0 6px;color:var(--coral)}.defs p{margin:0;font-size:14px;line-height:1.45}
+.qp-head{font-weight:bold;color:var(--navy);font-size:clamp(16px,2.4vw,20px);margin:28px 0 10px;display:flex;align-items:center;gap:8px}
+.qp-again{background:var(--coral);width:auto;padding:11px 20px}
 .table-wrap{overflow-x:auto;margin:14px 0}table.place{border-collapse:collapse;margin:0 auto;min-width:260px;font-size:1em}table.place th,table.place td{border:1px solid #ccd6d3;padding:9px 14px;text-align:center}table.place th{background:#eef6f4;color:var(--navy)}table.place td:first-child,table.place th:first-child{text-align:left}
 .practice{background:#edf7f5;max-width:none}.practice>div{max-width:1000px;margin:auto}.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:0 5px #dbe9e6;margin-bottom:22px}.top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}.num{background:var(--navy);color:#fff;border-radius:50%;width:34px;height:34px;display:grid;place-items:center;font-weight:bold;flex:none}.tag{background:#e8f1ff;color:#28549f;border-radius:999px;padding:6px 12px;font-size:11px;font-weight:bold}
 .problem{font-size:clamp(14px,2vw,17px);line-height:1.55}.problem p{margin:8px 0}.given{background:var(--navy);color:#fff;text-align:center;padding:15px;border-radius:9px;font-size:clamp(17px,3vw,23px);font-weight:bold;margin:14px 0;letter-spacing:2px}.given small{display:block;color:#98d9d0;font-size:10px;letter-spacing:2px;font-weight:bold;margin-bottom:4px}
@@ -61,8 +63,8 @@ footer{text-align:center;background:#062532;color:#acc8cd;padding:22px;font-size
       <div><h4>Muestra</h4><p>Es una <b>parte</b> de la población que se elige para observarla o medirla, cuando estudiarla completa sería muy difícil.</p></div>
     </div>
     <div class="note">📍 Truco: la <b>muestra</b> siempre es <b>más pequeña</b> y está <b>dentro</b> de la población. La población es el grupo grande; la muestra es el pedacito que se estudia.</div>
-    <div id="pobExamples"></div>
-    <div class="new"><h2>¿Quieres otro ejemplo?</h2><button onclick="newTheoryPob()">↻ Otro ejemplo</button></div>
+    <p class="qp-head">✏️ Práctica rápida</p>
+    <div id="quickPob"></div>
   </section>
 
   <section class="section" id="sheetPos" hidden>
@@ -75,8 +77,8 @@ footer{text-align:center;background:#062532;color:#acc8cd;padding:22px;font-size
       <div><h4>Mínimo</h4><p>El dato <b>menor</b> de todos.</p></div>
       <div><h4>Máximo</h4><p>El dato <b>mayor</b> de todos.</p></div>
     </div>
-    <div id="posExamples"></div>
-    <div class="new"><h2>¿Quieres otro ejemplo?</h2><button onclick="newTheoryPos()">↻ Otro ejemplo</button></div>
+    <p class="qp-head">✏️ Práctica rápida</p>
+    <div id="quickPos"></div>
   </section>
 
   <section class="section" id="sheetRec" hidden>
@@ -84,8 +86,8 @@ footer{text-align:center;background:#062532;color:#acc8cd;padding:22px;font-size
     <div class="title"><span>📐</span><div><small>TEORÍA</small><h2>El recorrido (variabilidad)</h2></div></div>
     <div class="note">💡 El <b>recorrido</b> (también llamado <b>rango</b>) es una medida de <b>variabilidad</b>: indica qué tan separados están los datos. Se obtiene restando el dato mínimo al dato máximo:</div>
     <div class="theory-card" style="text-align:center"><div class="big-eq">recorrido = máximo − mínimo</div></div>
-    <div id="recExamples"></div>
-    <div class="new"><h2>¿Quieres otro ejemplo?</h2><button onclick="newTheoryRec()">↻ Otro ejemplo</button></div>
+    <p class="qp-head">✏️ Práctica rápida</p>
+    <div id="quickRec"></div>
   </section>
 </div>
 
@@ -303,58 +305,37 @@ function newPractice(){
   document.getElementById('practiceItems').innerHTML = items.map(practiceCard).join('');
 }
 
-/* ==================== TEORÍA: ejemplos interactivos ==================== */
-/* Población y muestra */
-let theoryPob=genPobMuestra();
-function renderTheoryPob(){
-  const e=theoryPob;
-  document.getElementById('pobExamples').innerHTML=`<article class="theory-card"><h3>🔎 Ejemplo</h3><div class="problem">${e.question.replace(/la (muestra|población) corresponde a/,'¿cuál es la población y cuál es la muestra?')}</div><div class="theory-buttons"><button class="process-btn" onclick="showProcessPob()">Ver la respuesta</button></div><div id="pobOut"></div></article>`;
+/* ==================== TEORÍA: práctica rápida (selección única, 4 opciones) ==================== */
+function checkTheoryItem(cardEl){
+  const sel=cardEl.querySelector('input:checked');
+  const out=cardEl.querySelector('.result');
+  if(!sel){ out.innerHTML='<div class="feedback bad">Selecciona una opción antes de comprobar.</div>'; return; }
+  const answer=cardEl.dataset.answer;
+  const ok=sel.value===answer;
+  cardEl.querySelectorAll('.opt').forEach(o=>{
+    o.classList.add('locked'); o.querySelector('input').disabled=true;
+    if(o.dataset.value===answer) o.classList.add('is-correct');
+    else if(o===sel.closest('.opt')) o.classList.add('is-wrong');
+  });
+  cardEl.querySelector('.check').disabled=true;
+  if(ok){ out.innerHTML='<div class="feedback good"><h3>🎉 ¡Muy bien! Respuesta correcta.</h3></div>'; celebrate(); }
+  else { out.innerHTML=`<div class="feedback bad"><h3>✕ La respuesta correcta es ${answer}.</h3><div class="steps"><b>Así se resuelve</b>${cardEl.querySelector('template').innerHTML}</div></div>`; }
 }
-function showProcessPob(){
-  const e=theoryPob;
-  document.getElementById('pobOut').innerHTML=`<div class="solution-box"><h4>Cómo se distingue</h4><div class="solve-step"><b>1</b><span>${e.steps[0]}</span></div><div class="solve-step"><b>2</b><span>${e.steps[1]}</span></div></div>`;
+function quickCard(item, otherFn){
+  const name='tq'+Math.random().toString(36).slice(2,7);
+  return `<article class="card" data-answer="${item.answer}">
+    <div class="top"><span class="tag">${item.typeLabel.replace(/^Ítem \d+ · /,'Práctica rápida · ')}</span></div>
+    <div class="problem">${item.question}</div>
+    ${optionsHTML(name, item.options)}
+    <button class="check" onclick="checkTheoryItem(this.closest('.card'))">Comprobar respuesta</button>
+    <div class="result"></div>
+    <template>${stepsHTML(item.steps)}</template>
+    <div style="text-align:center;margin-top:14px"><button class="check qp-again" onclick="${otherFn}()">🔄 Otro ítem</button></div>
+  </article>`;
 }
-function newTheoryPob(){ theoryPob=genPobMuestra(); renderTheoryPob(); }
-
-/* Medidas de posición: se muestran las cuatro */
-let theoryPos=null;
-function makeTheoryPos(){
-  const c=pick(POS_CTX);
-  const n=Math.min(c.names.length, 5);
-  const s=genSet(n,c.lo,c.hi,{uniqueMode:true,intMean:true,distinct:true,minGap:3});
-  const fmt=x=> c.unit ? `${fmtInt(x)} ${c.unit}` : `${fmtInt(x)}`;
-  return {c,n,s,fmt};
-}
-function renderTheoryPos(){
-  const {c,n,s}=theoryPos;
-  const rows=c.names.slice(0,n).map((nm,i)=>`<tr><td>${nm}</td><td>${fmtInt(s.vals[i])}</td></tr>`).join('');
-  const table=`<div class="table-wrap"><table class="place"><tr><th>${c.ent}</th><th>${c.val}</th></tr>${rows}</table></div>`;
-  document.getElementById('posExamples').innerHTML=`<article class="theory-card"><h3>🔎 Ejemplo</h3><p class="problem">La tabla muestra ${c.noun}:</p>${table}<div class="theory-buttons"><button class="process-btn" onclick="showProcessPos()">Ver las cuatro medidas</button></div><div id="posOut"></div></article>`;
-}
-function showProcessPos(){
-  const {s,fmt}=theoryPos;
-  const box=[
-    `<b>Moda:</b> el dato que más se repite es ${fmt(s.mode)} (aparece ${s.modeCount} veces).`,
-    `<b>Media aritmética:</b> ${s.vals.join(' + ')} = ${s.sum};  ${s.sum} ÷ ${s.n} = ${fmt(s.mean)}.`,
-    `<b>Mínimo:</b> el menor dato es ${fmt(s.min)}.`,
-    `<b>Máximo:</b> el mayor dato es ${fmt(s.max)}.`,
-    `<b>Recorrido:</b> ${fmtInt(s.max)} − ${fmtInt(s.min)} = ${fmtInt(s.max-s.min)}.`
-  ];
-  document.getElementById('posOut').innerHTML=`<div class="solution-box"><h4>Resultados</h4>${box.map((t,i)=>`<div class="solve-step"><b>${i+1}</b><span>${t}</span></div>`).join('')}</div>`;
-}
-function newTheoryPos(){ theoryPos=makeTheoryPos(); renderTheoryPos(); }
-
-/* Recorrido */
-let theoryRec=genRecorrido();
-function renderTheoryRec(){
-  const e=theoryRec;
-  document.getElementById('recExamples').innerHTML=`<article class="theory-card"><h3>🔎 Ejemplo</h3><div class="problem">${e.question}</div><div class="theory-buttons"><button class="process-btn" onclick="showProcessRec()">Ver proceso de solución</button></div><div id="recOut"></div></article>`;
-}
-function showProcessRec(){
-  const e=theoryRec;
-  document.getElementById('recOut').innerHTML=`<div class="solution-box"><h4>Proceso de solución</h4>${e.steps.map((s,j)=>`<div class="solve-step"><b>${j+1}</b><span>${s}</span></div>`).join('')}</div>`;
-}
-function newTheoryRec(){ theoryRec=genRecorrido(); renderTheoryRec(); }
+function newQuickPob(){ document.getElementById('quickPob').innerHTML=quickCard(genPobMuestra(),'newQuickPob'); }
+function newQuickPos(){ document.getElementById('quickPos').innerHTML=quickCard(genMedida(),'newQuickPos'); }
+function newQuickRec(){ document.getElementById('quickRec').innerHTML=quickCard(genRecorrido(),'newQuickRec'); }
 
 /* ---------- tabs y menú de teoría ---------- */
 function showTab(tab){['theory','practice'].forEach(x=>{document.getElementById(x+'Panel').hidden=x!==tab;document.getElementById('tab'+x[0].toUpperCase()+x.slice(1)).classList.toggle('active',x===tab)});if(tab==='theory')backToTheoryMenu();window.scrollTo({top:document.querySelector('.tabs').offsetTop,behavior:'smooth'})}
@@ -363,9 +344,7 @@ function showTheorySheet(name){document.getElementById('teoria').hidden=true;Obj
 function backToTheoryMenu(){document.getElementById('teoria').hidden=false;Object.values(THEORY_SHEETS).forEach(id=>document.getElementById(id).hidden=true)}
 
 /* ---------- init ---------- */
-renderTheoryPob();
-theoryPos=makeTheoryPos(); renderTheoryPos();
-renderTheoryRec();
+newQuickPob(); newQuickPos(); newQuickRec();
 newPractice();
 showTab('theory');
 </script></body></html>
