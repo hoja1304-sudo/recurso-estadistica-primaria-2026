@@ -1,0 +1,371 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Problemas relacionados con conceptos estadísticos, medidas de posición o de variabilidad</title><style>
+.celebrate{position:fixed;inset:0;z-index:99;pointer-events:none;display:grid;place-items:center;background:#06253255;animation:fade 1.8s forwards}.celebrate div{font-size:clamp(55px,13vw,120px);text-align:center;animation:pop .55s ease-out}.celebrate b{display:block;color:#fff;font-size:clamp(22px,5vw,42px);text-shadow:0 3px 10px #000}.spark{position:absolute;font-size:42px;animation:burst 1.5s ease-out forwards}@keyframes pop{from{transform:scale(.2)}to{transform:scale(1)}}@keyframes burst{from{transform:translate(0,0) scale(.3);opacity:1}to{transform:translate(var(--x),var(--y)) scale(1.4);opacity:0}}@keyframes fade{0%,75%{opacity:1}100%{opacity:0}}
+.tabs{position:sticky;top:0;z-index:20;background:#fff;display:flex;justify-content:center;gap:12px;padding:14px;box-shadow:0 3px 14px #1232;flex-wrap:wrap}.tab{border:2px solid var(--blue);background:#fff;color:var(--blue);padding:12px 25px;border-radius:999px;font-weight:bold;cursor:pointer;min-height:44px;font-family:inherit;font-size:1em}.tab.active{background:var(--blue);color:#fff}.panel[hidden]{display:none}
+.theory-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:0 5px #dbe9e6;margin-bottom:20px}.theory-card h3{margin:0 0 4px}.theory-card .big-eq{font-size:clamp(19px,3.4vw,26px);font-weight:bold;margin:16px 0;color:var(--navy)}.theory-buttons{display:flex;flex-wrap:wrap;gap:10px}.theory-buttons button{border:0;border-radius:999px;padding:12px 17px;font-weight:bold;cursor:pointer;min-height:44px;font-family:inherit;font-size:1em}.process-btn{background:var(--blue);color:#fff}.solution-box{margin-top:16px;background:#edf7f5;border-radius:11px;padding:17px}.solution-box h4{margin:0 0 12px}.solve-step{display:flex;gap:10px;margin:10px 0;line-height:1.45}.solve-step>b{flex:none;width:25px;height:25px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:#fff}
+:root{--navy:#0a3043;--ink:#153849;--blue:#08708f;--coral:#ef704f;--cream:#fffaf0;--aqua:#e2f5f1;--line:#d6e6e3;--green:#197a55;--red:#bd3f3f}*{box-sizing:border-box}html{scroll-behavior:smooth;font-size:clamp(15px,0.35vw + 14px,18px)}body{margin:0;background:var(--cream);color:var(--ink);font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}.hero{background:var(--navy);color:#fff;padding:45px 7%;display:flex;justify-content:center;gap:50px;align-items:center;flex-wrap:wrap}.hero>div{max-width:660px}.eyebrow{color:#99d9d0;font-size:13px;font-weight:bold;letter-spacing:1px}.hero h1{font-size:clamp(26px,5vw,50px);line-height:1.05;margin:16px 0 12px}.hero p{font-size:clamp(15px,2vw,19px);color:#d6edf0;line-height:1.5}.hero a{border:0;background:var(--coral);color:#fff;padding:14px 20px;border-radius:999px;font-weight:bold;text-decoration:none;cursor:pointer;display:inline-block;min-height:44px}.bubble{flex:none;width:190px;height:190px;border-radius:50%;background:#f4c75f;color:var(--navy);display:grid;place-items:center;font-size:clamp(18px,3vw,24px);font-weight:bold;transform:rotate(-4deg);box-shadow:14px 16px #0e536a;text-align:center;padding:10px;line-height:1.2}
+.author{display:inline-flex;align-items:center;gap:10px;margin-top:18px;padding:9px 16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);border-radius:999px}.author .av{width:32px;height:32px;border-radius:50%;background:var(--coral);color:#fff;display:grid;place-items:center;font-weight:bold;font-size:13px;flex:none}.author .tx{line-height:1.25;font-size:13px;color:#e7f3f1}.author b{display:block;color:#fff;font-size:13px}
+.section{max-width:1080px;margin:auto;padding:52px 24px}.title{display:flex;gap:15px;align-items:center;margin-bottom:24px}.title>span{background:var(--coral);color:#fff;border-radius:50%;padding:11px;font-weight:bold;flex:none}.title small{color:var(--blue);font-weight:bold;letter-spacing:2px}.title h2{font-size:clamp(22px,4vw,36px);margin:4px 0}.note{background:var(--aqua);border-left:6px solid #37a88f;padding:20px;border-radius:0 12px 12px 0;font-size:clamp(14px,2vw,17px);line-height:1.55;margin-bottom:22px}.note b{color:var(--navy)}
+.defs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:20px 0}.defs div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:0 5px #dbe9e6}.defs h4{margin:0 0 6px;color:var(--coral)}.defs p{margin:0;font-size:14px;line-height:1.45}
+.table-wrap{overflow-x:auto;margin:14px 0}table.place{border-collapse:collapse;margin:0 auto;min-width:260px;font-size:1em}table.place th,table.place td{border:1px solid #ccd6d3;padding:9px 14px;text-align:center}table.place th{background:#eef6f4;color:var(--navy)}table.place td:first-child,table.place th:first-child{text-align:left}
+.practice{background:#edf7f5;max-width:none}.practice>div{max-width:1000px;margin:auto}.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:0 5px #dbe9e6;margin-bottom:22px}.top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}.num{background:var(--navy);color:#fff;border-radius:50%;width:34px;height:34px;display:grid;place-items:center;font-weight:bold;flex:none}.tag{background:#e8f1ff;color:#28549f;border-radius:999px;padding:6px 12px;font-size:11px;font-weight:bold}
+.problem{font-size:clamp(14px,2vw,17px);line-height:1.55}.problem p{margin:8px 0}.given{background:var(--navy);color:#fff;text-align:center;padding:15px;border-radius:9px;font-size:clamp(17px,3vw,23px);font-weight:bold;margin:14px 0;letter-spacing:2px}.given small{display:block;color:#98d9d0;font-size:10px;letter-spacing:2px;font-weight:bold;margin-bottom:4px}
+.options{display:grid;grid-template-columns:1fr;gap:10px;margin-top:14px}
+.opt{display:flex;align-items:center;gap:11px;border:2px solid var(--line);padding:11px 14px;border-radius:14px;cursor:pointer;font-weight:bold;background:#fff;min-height:44px;line-height:1.35}.opt input{position:absolute;opacity:0;width:0;height:0}
+.opt .dot{width:19px;height:19px;border-radius:50%;border:2.5px solid var(--blue);flex:none;position:relative}.opt .dot::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--blue);opacity:0;transform:scale(.4);transition:.15s}
+.opt input:checked ~ .dot::after{opacity:1;transform:scale(1)}
+.opt:has(input:checked){background:#edf8fb;border-color:var(--blue)}
+.opt.is-correct{border-color:var(--green);background:#e9f8ef}.opt.is-correct .dot{border-color:var(--green)}.opt.is-correct .dot::after{background:var(--green);opacity:1;transform:scale(1)}
+.opt.is-wrong{border-color:var(--red);background:#fdecea}.opt.is-wrong .dot{border-color:var(--red)}.opt.is-wrong .dot::after{background:var(--red);opacity:1;transform:scale(1)}
+.opt.locked{cursor:default}.opt .lt{flex:none;font-weight:bold;color:var(--blue)}
+.check{width:100%;margin-top:14px;background:var(--blue);border:0;color:#fff;padding:13px 18px;border-radius:999px;font-weight:bold;cursor:pointer;min-height:44px;font-family:inherit;font-size:1em}.check:disabled{opacity:.5;cursor:default}
+.feedback{margin-top:14px;padding:15px 16px;border-radius:12px}.good{background:#e7f7ef;border:1px solid #9bd4b7}.bad{background:#fff0ef;border:1px solid #eab0ac}.feedback h3{margin:0;font-size:clamp(15px,2.4vw,18px)}.steps{border-top:1px solid #0002;margin-top:10px;padding-top:8px}.steps p{margin:7px 0;line-height:1.5}
+.new{background:var(--navy);color:#fff;text-align:center;padding:34px 20px;border-radius:16px;margin-top:10px}.new h2{margin:0 0 14px;font-size:clamp(18px,3vw,26px)}.new button{border:0;background:var(--coral);color:#fff;padding:13px 22px;border-radius:999px;font-weight:bold;cursor:pointer;font-size:1em;min-height:44px;font-family:inherit}
+.theory-menu{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:10px}.theory-menu-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px 22px;box-shadow:0 6px #dbe9e6;text-align:center;cursor:pointer;transition:.15s;min-height:44px}.theory-menu-card:hover{transform:translateY(-3px);box-shadow:0 10px #dbe9e6}.theory-menu-card .ic{font-size:44px;display:block;margin-bottom:12px}.theory-menu-card h3{margin:0 0 8px;color:var(--navy);font-size:clamp(16px,2.4vw,19px)}.theory-menu-card p{margin:0;color:var(--ink);font-size:14px;line-height:1.4}.theory-menu-card b{display:inline-block;margin-top:14px;color:var(--blue);font-size:14px}
+.back-btn{border:0;background:#e8f1ff;color:#28549f;padding:11px 16px;border-radius:999px;font-weight:bold;cursor:pointer;margin-bottom:22px;min-height:44px;font-family:inherit;font-size:1em}
+footer{text-align:center;background:#062532;color:#acc8cd;padding:22px;font-size:13px;line-height:1.6}
+@media(max-width:900px){.theory-menu{grid-template-columns:1fr}}
+@media(max-width:720px){.hero{display:block;padding:38px 20px;text-align:center}.bubble{width:150px;height:150px;margin:30px auto 0}.section{padding:40px 16px}.title{align-items:flex-start}.card{padding:16px}}
+</style></head><body>
+<header class="hero">
+  <div>
+    <div class="eyebrow">MATEMÁTICA · BLOQUE 5 · ESTADÍSTICA Y PROBABILIDADES · SEXTO GRADO</div>
+    <h1>Problemas relacionados con conceptos estadísticos, medidas de posición o de variabilidad</h1>
+    <p>Corresponde a los ítems 54, 55 y 56 · Interpreta información resumida en tablas o gráficos, reconoce los conceptos de población y muestra, calcula medidas de posición (moda, media aritmética, mínimo y máximo) y el recorrido de un grupo de datos.</p>
+    <a href="#teoria">Ver la teoría ↓</a>
+    <div class="author"><span class="av">AJ</span><span class="tx"><b>Elaborado por: Alberto Jiménez Ruiz</b>Asesor Regional de Matemática · DAP-DRE-Cartago 2026</span></div>
+  </div>
+  <div class="bubble">máx − mín<br>= recorrido</div>
+</header>
+
+<nav class="tabs" aria-label="Secciones">
+  <button class="tab active" id="tabTheory" onclick="showTab('theory')">📖 Teoría</button>
+  <button class="tab" id="tabPractice" onclick="showTab('practice')">✏️ Práctica</button>
+</nav>
+
+<div class="panel" id="theoryPanel">
+  <section class="section" id="teoria">
+    <div class="title"><span>01</span><div><small>TEORÍA</small><h2>Elige qué quieres repasar</h2></div></div>
+    <div class="theory-menu">
+      <div class="theory-menu-card" onclick="showTheorySheet('pob')"><span class="ic">🐦</span><h3>Población y muestra</h3><p>Cómo distinguir el conjunto total (población) de la parte que se estudia (muestra).</p><b>Entrar →</b></div>
+      <div class="theory-menu-card" onclick="showTheorySheet('pos')"><span class="ic">📊</span><h3>Medidas de posición</h3><p>Moda, media aritmética, mínimo y máximo de un grupo de datos.</p><b>Entrar →</b></div>
+      <div class="theory-menu-card" onclick="showTheorySheet('rec')"><span class="ic">📐</span><h3>El recorrido</h3><p>La variabilidad: la diferencia entre el dato máximo y el mínimo.</p><b>Entrar →</b></div>
+    </div>
+  </section>
+
+  <section class="section" id="sheetPob" hidden>
+    <button class="back-btn" onclick="backToTheoryMenu()">← Volver</button>
+    <div class="title"><span>🐦</span><div><small>TEORÍA</small><h2>Población y muestra</h2></div></div>
+    <div class="note">💡 Cuando se hace un estudio, no siempre se puede observar a <b>todos</b> los elementos. Por eso se distingue entre dos conjuntos:</div>
+    <div class="defs">
+      <div><h4>Población</h4><p>Es el <b>conjunto total</b> de elementos que se quiere estudiar (todas las personas, animales u objetos del estudio).</p></div>
+      <div><h4>Muestra</h4><p>Es una <b>parte</b> de la población que se elige para observarla o medirla, cuando estudiarla completa sería muy difícil.</p></div>
+    </div>
+    <div class="note">📍 Truco: la <b>muestra</b> siempre es <b>más pequeña</b> y está <b>dentro</b> de la población. La población es el grupo grande; la muestra es el pedacito que se estudia.</div>
+    <div id="pobExamples"></div>
+    <div class="new"><h2>¿Quieres otro ejemplo?</h2><button onclick="newTheoryPob()">↻ Otro ejemplo</button></div>
+  </section>
+
+  <section class="section" id="sheetPos" hidden>
+    <button class="back-btn" onclick="backToTheoryMenu()">← Volver</button>
+    <div class="title"><span>📊</span><div><small>TEORÍA</small><h2>Medidas de posición</h2></div></div>
+    <div class="note">💡 Las <b>medidas de posición</b> resumen un grupo de datos en un solo valor representativo.</div>
+    <div class="defs">
+      <div><h4>Moda</h4><p>El dato que <b>más se repite</b>.</p></div>
+      <div><h4>Media aritmética</h4><p>El <b>promedio</b>: se <b>suman</b> todos los datos y se <b>divide</b> entre la cantidad de datos.</p></div>
+      <div><h4>Mínimo</h4><p>El dato <b>menor</b> de todos.</p></div>
+      <div><h4>Máximo</h4><p>El dato <b>mayor</b> de todos.</p></div>
+    </div>
+    <div id="posExamples"></div>
+    <div class="new"><h2>¿Quieres otro ejemplo?</h2><button onclick="newTheoryPos()">↻ Otro ejemplo</button></div>
+  </section>
+
+  <section class="section" id="sheetRec" hidden>
+    <button class="back-btn" onclick="backToTheoryMenu()">← Volver</button>
+    <div class="title"><span>📐</span><div><small>TEORÍA</small><h2>El recorrido (variabilidad)</h2></div></div>
+    <div class="note">💡 El <b>recorrido</b> (también llamado <b>rango</b>) es una medida de <b>variabilidad</b>: indica qué tan separados están los datos. Se obtiene restando el dato mínimo al dato máximo:</div>
+    <div class="theory-card" style="text-align:center"><div class="big-eq">recorrido = máximo − mínimo</div></div>
+    <div id="recExamples"></div>
+    <div class="new"><h2>¿Quieres otro ejemplo?</h2><button onclick="newTheoryRec()">↻ Otro ejemplo</button></div>
+  </section>
+</div>
+
+<div class="panel" id="practicePanel" hidden>
+  <section class="section practice">
+    <div>
+      <div class="title"><span>02</span><div><small>PRÁCTICA</small><h2>Tres ítems de este tema</h2></div></div>
+      <p>Un ítem de población y muestra, uno de medidas de posición y uno de recorrido. Marca una opción (se señala con un punto) y pulsa «Comprobar respuesta». <span class="tag" id="scoreBadge">Puntaje: 0/3</span></p>
+      <div id="practiceItems"></div>
+    </div>
+  </section>
+  <div class="section" style="padding-top:0"><div class="new"><h2>¿Listos para otros tres ítems?</h2><button onclick="newPractice()">↻ Otra práctica</button></div></div>
+</div>
+
+<footer>Problemas relacionados con conceptos estadísticos, medidas de posición o de variabilidad · Bloque 5, Estadística y Probabilidades<br>Elaborado por: Alberto Jiménez Ruiz — Asesor Regional de Matemática · DAP-DRE-Cartago 2026</footer>
+
+<script>
+/* ---------- utilidades ---------- */
+function rand(min,max){return Math.floor(Math.random()*(max-min+1))+min;}
+function pick(a){return a[Math.floor(Math.random()*a.length)];}
+function shuffle(arr){const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=rand(0,i);[a[i],a[j]]=[a[j],a[i]];}return a;}
+function fmtInt(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,' ');}
+function celebrate(){let layer=document.createElement('div');layer.className='celebrate';layer.innerHTML='<div>🥳<b>¡Excelente trabajo!</b></div>'+['🎆','🎇','✨','🎉','🎆','✨','🎇','🎉'].map((x,i)=>`<span class="spark" style="--x:${Math.cos(i*.785)*260}px;--y:${Math.sin(i*.785)*260}px">${x}</span>`).join('');document.body.appendChild(layer);setTimeout(()=>layer.remove(),1800)}
+
+/* ---------- estadistica de un conjunto ---------- */
+function statsOf(vals){
+  const n=vals.length, sum=vals.reduce((a,b)=>a+b,0), mean=sum/n;
+  const min=Math.min(...vals), max=Math.max(...vals);
+  const freq={}; vals.forEach(v=>freq[v]=(freq[v]||0)+1);
+  const entries=Object.entries(freq).map(([v,c])=>[Number(v),c]).sort((a,b)=>b[1]-a[1]);
+  const mode=entries[0][0], modeCount=entries[0][1];
+  const uniqueMode = entries.length===1 ? true : entries[0][1]>entries[1][1];
+  return {vals,n,sum,mean,min,max,mode,modeCount,uniqueMode};
+}
+function genSet(n,lo,hi,opts){
+  opts=opts||{};
+  let last=null;
+  for(let a=0;a<400;a++){
+    const vals=Array.from({length:n},()=>rand(lo,hi));
+    const s=statsOf(vals); last=s;
+    if(opts.uniqueMode && !s.uniqueMode) continue;
+    if(opts.intMean && !Number.isInteger(s.mean)) continue;
+    if(opts.minGap && (s.max-s.min)<opts.minGap) continue;
+    if(opts.distinct){const set=new Set([s.mode,Math.round(s.mean),s.min,s.max]); if(set.size<4) continue;}
+    return s;
+  }
+  return last;
+}
+function distractors(correct, pool){
+  const set=[]; const seen=new Set([correct]);
+  pool.forEach(v=>{ if(v>0 && !seen.has(v)){seen.add(v); set.push(v);} });
+  let guard=0;
+  while(set.length<3 && guard<80){guard++; const v=correct+rand(-4,4); if(v>0 && !seen.has(v)){seen.add(v); set.push(v);}}
+  return set.slice(0,3);
+}
+
+/* ==================== TIPO 1 · POBLACIÓN Y MUESTRA ==================== */
+const POB_CTX=[
+  {who:'un grupo de biólogos', verb:'conocer', factor:'las enfermedades que afectan a las aves',
+   big:N=>`las ${fmtInt(N)} especies de aves registradas en una reserva biológica`, short:'esas especies de aves',
+   small:M=>`las ${fmtInt(M)} especies de aves a las que el grupo les realizó el estudio`,
+   doer:'el grupo de biólogos que realizó el estudio', nlo:150,nhi:320,mlo:15,mhi:40},
+  {who:'una fábrica', verb:'revisar la calidad de', factor:'la calidad de los bombillos',
+   big:N=>`los ${fmtInt(N)} bombillos que la fábrica produjo en un día`, short:'esos bombillos',
+   small:M=>`los ${fmtInt(M)} bombillos que se revisaron`,
+   doer:'la fábrica que produjo los bombillos', nlo:400,nhi:900,mlo:20,mhi:60},
+  {who:'un colegio', verb:'conocer la opinión de', factor:'la opinión sobre el comedor',
+   big:N=>`los ${fmtInt(N)} estudiantes matriculados en un colegio`, short:'esos estudiantes',
+   small:M=>`los ${fmtInt(M)} estudiantes que respondieron la encuesta`,
+   doer:'el colegio que hizo la encuesta', nlo:400,nhi:800,mlo:30,mhi:70},
+  {who:'una finca', verb:'estudiar el estado de', factor:'el estado de salud de los árboles',
+   big:N=>`los ${fmtInt(N)} árboles de naranja que tiene una finca`, short:'esos árboles',
+   small:M=>`los ${fmtInt(M)} árboles de naranja que se revisaron`,
+   doer:'la finca dueña de los árboles', nlo:200,nhi:600,mlo:20,mhi:50}
+];
+function genPobMuestra(){
+  const c=pick(POB_CTX);
+  const N=rand(c.nlo,c.nhi), M=rand(c.mlo,c.mhi);
+  const optPob=c.big(N), optMue=c.small(M);
+  const ask=pick(['muestra','población']);
+  const answer = ask==='muestra' ? optMue : optPob;
+  const options=shuffle([optPob,optMue,c.factor,c.doer]);
+  const steps=[
+    `La <b>población</b> es el conjunto total que se quiere estudiar: en este caso, ${optPob}.`,
+    `La <b>muestra</b> es la parte de la población que realmente se observa: en este caso, ${optMue}.`,
+    `La pregunta pide la <b>${ask}</b>, así que la respuesta es: ${answer}.`
+  ];
+  return {
+    typeLabel:'Ítem 1 · Población y muestra',
+    question:`<p>Considere la siguiente información:</p><p>${c.who.charAt(0).toUpperCase()+c.who.slice(1)} pretende ${c.verb} ${c.factor} de ${optPob}. Para ello, decide realizar un estudio a ${fmtInt(M)} de ${c.short}.</p><p>De acuerdo con la información anterior, en ese estudio, la ${ask} corresponde a</p>`,
+    options, answer, steps
+  };
+}
+
+/* ==================== TIPO 2 · MEDIDAS DE POSICIÓN ==================== */
+const POS_CTX=[
+  {ent:'Estudiante', val:'Hermanos', unit:'', noun:'la cantidad de hermanos de algunos estudiantes',
+   names:['Ana','Luis','Sofía','Diego','Marta','Karla','Bryan'], lo:0,hi:5},
+  {ent:'Niño', val:'Peso (kg)', unit:'kg', noun:'el peso, en kilogramos, de algunos niños',
+   names:['Katia','Manuel','Norma','Lavinia','Fabricio','Xinia'], lo:12,hi:28},
+  {ent:'Jugador', val:'Edad', unit:'años', noun:'la edad, en años, de los jugadores titulares de un equipo',
+   names:['Carlos','Óscar','Manuel','Cristian','Osvaldo','Bryan'], lo:18,hi:38},
+  {ent:'Estudiante', val:'Libros leídos', unit:'', noun:'la cantidad de libros leídos por algunos estudiantes',
+   names:['Elena','Pablo','Rita','Tomás','Nadia','Iván'], lo:1,hi:8},
+  {ent:'Día', val:'Goles', unit:'goles', noun:'la cantidad de goles anotados por un equipo en varios partidos',
+   names:['Partido 1','Partido 2','Partido 3','Partido 4','Partido 5'], lo:0,hi:6}
+];
+function genMedida(){
+  const measure=pick(['moda','media','mínimo','máximo']);
+  for(let attempt=0;attempt<15;attempt++){
+    const c=pick(POS_CTX);
+    const n=Math.min(c.names.length, pick([5,5,6]));
+    const opts = measure==='moda' ? {uniqueMode:true,minGap:2} : measure==='media' ? {intMean:true,uniqueMode:true,minGap:2} : {uniqueMode:true,minGap:3};
+    const s=genSet(n,c.lo,c.hi,opts);
+    const fmt=x=> c.unit ? `${fmtInt(x)} ${c.unit}` : `${fmtInt(x)}`;
+    let correct, ask, steps, poolNums;
+    const meanR=Math.round(s.mean);
+    if(measure==='moda'){ correct=s.mode; ask='¿cuál es la moda de esos datos?'; poolNums=[s.min,s.max,meanR];
+      steps=[`La moda es el dato que <b>más se repite</b>.`,`Al contar, el valor ${fmt(s.mode)} aparece ${s.modeCount} veces, más que cualquier otro.`,`Por lo tanto, la moda es ${fmt(s.mode)}.`]; }
+    else if(measure==='media'){ correct=s.mean; ask='¿cuál es la media aritmética (el promedio) de esos datos?'; poolNums=[s.min,s.max,s.mode];
+      steps=[`La media aritmética se obtiene <b>sumando</b> todos los datos y <b>dividiendo</b> entre la cantidad de datos.`,`Sume los datos: ${s.vals.join(' + ')} = ${s.sum}.`,`Hay ${s.n} datos, así que divida: ${s.sum} ÷ ${s.n} = ${s.mean}.`,`Por lo tanto, la media aritmética es ${fmt(s.mean)}.`]; }
+    else if(measure==='mínimo'){ correct=s.min; ask='¿cuál es el valor mínimo de esos datos?'; poolNums=[s.max,s.mode,meanR];
+      steps=[`El mínimo es el <b>menor</b> de todos los datos.`,`Compare los datos: ${s.vals.join(', ')}.`,`El menor es ${fmt(s.min)}. Por lo tanto, el mínimo es ${fmt(s.min)}.`]; }
+    else { correct=s.max; ask='¿cuál es el valor máximo de esos datos?'; poolNums=[s.min,s.mode,meanR];
+      steps=[`El máximo es el <b>mayor</b> de todos los datos.`,`Compare los datos: ${s.vals.join(', ')}.`,`El mayor es ${fmt(s.max)}. Por lo tanto, el máximo es ${fmt(s.max)}.`]; }
+    const dList=distractors(correct,poolNums);
+    const optionsNum=[correct,...dList];
+    if(new Set(optionsNum).size!==4) continue;
+    const options=shuffle(optionsNum.map(fmt));
+    const rows=c.names.slice(0,n).map((nm,i)=>`<tr><td>${nm}</td><td>${fmtInt(s.vals[i])}</td></tr>`).join('');
+    const table=`<div class="table-wrap"><table class="place"><tr><th>${c.ent}</th><th>${c.val}</th></tr>${rows}</table></div>`;
+    return {
+      typeLabel:'Ítem 2 · Medidas de posición',
+      question:`<p>Considere la siguiente información:</p><p>La siguiente tabla muestra ${c.noun}:</p>${table}<p>De acuerdo con la información anterior, ${ask}</p>`,
+      options, answer:fmt(correct), steps
+    };
+  }
+  return genMedida();
+}
+
+/* ==================== TIPO 3 · RECORRIDO ==================== */
+const REC_CTX=[
+  {noun:'las temperaturas máximas (en °C) registradas en una ciudad durante varios días', lo:20,hi:38,n:6},
+  {noun:'las edades, en años, de un grupo de personas', lo:8,hi:60,n:6},
+  {noun:'las estaturas, en centímetros, de varios estudiantes', lo:120,hi:170,n:6},
+  {noun:'la cantidad de goles anotados por un equipo en varios partidos', lo:0,hi:9,n:6},
+  {noun:'la cantidad de puntos que obtuvo un jugador en varios juegos', lo:5,hi:40,n:6}
+];
+function genRecorrido(){
+  for(let attempt=0;attempt<15;attempt++){
+    const c=pick(REC_CTX);
+    const s=genSet(c.n,c.lo,c.hi,{minGap:4});
+    const R=s.max-s.min;
+    const pool=[s.max,s.min,R+1,s.max+s.min];
+    const dList=distractors(R,pool);
+    const optionsNum=[R,...dList];
+    if(new Set(optionsNum).size!==4) continue;
+    const options=shuffle(optionsNum.map(x=>fmtInt(x)));
+    const steps=[
+      `El recorrido es la <b>diferencia</b> entre el dato máximo y el dato mínimo.`,
+      `El dato máximo es ${fmtInt(s.max)} y el dato mínimo es ${fmtInt(s.min)}.`,
+      `Reste: ${fmtInt(s.max)} − ${fmtInt(s.min)} = ${fmtInt(R)}.`,
+      `Por lo tanto, el recorrido es ${fmtInt(R)}.`
+    ];
+    return {
+      typeLabel:'Ítem 3 · Recorrido (variabilidad)',
+      question:`<p>Considere la siguiente información:</p><p>Los siguientes datos muestran ${c.noun}:</p><div class="given"><small>DATOS</small>${s.vals.map(fmtInt).join('   ')}</div><p>De acuerdo con la información anterior, ¿cuál es el recorrido de esos datos?</p>`,
+      options, answer:fmtInt(R), steps
+    };
+  }
+  return genRecorrido();
+}
+
+/* ==================== RENDER DE PRÁCTICA ==================== */
+const ABC=['A','B','C','D'];
+function optionsHTML(name, options){
+  return `<div class="options">${options.map((o,i)=>`<label class="opt" data-value="${o}"><input type="radio" name="${name}" value="${o}"><span class="dot"></span><span class="lt">${ABC[i]})</span><span>${o}</span></label>`).join('')}</div>`;
+}
+function stepsHTML(steps){ return steps.map((s,j)=>`<p><b>Paso ${j+1}.</b> ${s}</p>`).join(''); }
+
+let score=0, totalAnswered=0;
+function updateScore(){ document.getElementById('scoreBadge').textContent=`Puntaje: ${score}/3`; }
+
+function checkPracticeItem(cardEl){
+  const sel=cardEl.querySelector('input:checked');
+  const out=cardEl.querySelector('.result');
+  if(!sel){ out.innerHTML='<div class="feedback bad">Selecciona una opción antes de comprobar.</div>'; return; }
+  const answer=cardEl.dataset.answer;
+  const ok = sel.value===answer;
+  cardEl.querySelectorAll('.opt').forEach(o=>{
+    o.classList.add('locked');
+    o.querySelector('input').disabled=true;
+    if(o.dataset.value===answer) o.classList.add('is-correct');
+    else if(o===sel.closest('.opt')) o.classList.add('is-wrong');
+  });
+  cardEl.querySelector('.check').disabled=true;
+  if(ok){ score++; out.innerHTML=`<div class="feedback good"><h3>✓ ¡Correcto!</h3></div>`; celebrate(); }
+  else { out.innerHTML=`<div class="feedback bad"><h3>✕ La respuesta correcta es ${answer}.</h3><div class="steps"><b>Así se resuelve</b>${cardEl.querySelector('template').innerHTML}</div></div>`; }
+  updateScore();
+}
+function practiceCard(item, idx){
+  const name='pr'+idx;
+  return `<article class="card" data-answer="${item.answer}">
+    <div class="top"><span class="num">${idx+1}</span><span class="tag">${item.typeLabel}</span></div>
+    <div class="problem">${item.question}</div>
+    ${optionsHTML(name, item.options)}
+    <button class="check" onclick="checkPracticeItem(this.closest('.card'))">Comprobar respuesta</button>
+    <div class="result"></div>
+    <template>${stepsHTML(item.steps)}</template>
+  </article>`;
+}
+function newPractice(){
+  score=0; updateScore();
+  const items=[genPobMuestra(), genMedida(), genRecorrido()];
+  document.getElementById('practiceItems').innerHTML = items.map(practiceCard).join('');
+}
+
+/* ==================== TEORÍA: ejemplos interactivos ==================== */
+/* Población y muestra */
+let theoryPob=genPobMuestra();
+function renderTheoryPob(){
+  const e=theoryPob;
+  document.getElementById('pobExamples').innerHTML=`<article class="theory-card"><h3>🔎 Ejemplo</h3><div class="problem">${e.question.replace(/la (muestra|población) corresponde a/,'¿cuál es la población y cuál es la muestra?')}</div><div class="theory-buttons"><button class="process-btn" onclick="showProcessPob()">Ver la respuesta</button></div><div id="pobOut"></div></article>`;
+}
+function showProcessPob(){
+  const e=theoryPob;
+  document.getElementById('pobOut').innerHTML=`<div class="solution-box"><h4>Cómo se distingue</h4><div class="solve-step"><b>1</b><span>${e.steps[0]}</span></div><div class="solve-step"><b>2</b><span>${e.steps[1]}</span></div></div>`;
+}
+function newTheoryPob(){ theoryPob=genPobMuestra(); renderTheoryPob(); }
+
+/* Medidas de posición: se muestran las cuatro */
+let theoryPos=null;
+function makeTheoryPos(){
+  const c=pick(POS_CTX);
+  const n=Math.min(c.names.length, 5);
+  const s=genSet(n,c.lo,c.hi,{uniqueMode:true,intMean:true,distinct:true,minGap:3});
+  const fmt=x=> c.unit ? `${fmtInt(x)} ${c.unit}` : `${fmtInt(x)}`;
+  return {c,n,s,fmt};
+}
+function renderTheoryPos(){
+  const {c,n,s}=theoryPos;
+  const rows=c.names.slice(0,n).map((nm,i)=>`<tr><td>${nm}</td><td>${fmtInt(s.vals[i])}</td></tr>`).join('');
+  const table=`<div class="table-wrap"><table class="place"><tr><th>${c.ent}</th><th>${c.val}</th></tr>${rows}</table></div>`;
+  document.getElementById('posExamples').innerHTML=`<article class="theory-card"><h3>🔎 Ejemplo</h3><p class="problem">La tabla muestra ${c.noun}:</p>${table}<div class="theory-buttons"><button class="process-btn" onclick="showProcessPos()">Ver las cuatro medidas</button></div><div id="posOut"></div></article>`;
+}
+function showProcessPos(){
+  const {s,fmt}=theoryPos;
+  const box=[
+    `<b>Moda:</b> el dato que más se repite es ${fmt(s.mode)} (aparece ${s.modeCount} veces).`,
+    `<b>Media aritmética:</b> ${s.vals.join(' + ')} = ${s.sum};  ${s.sum} ÷ ${s.n} = ${fmt(s.mean)}.`,
+    `<b>Mínimo:</b> el menor dato es ${fmt(s.min)}.`,
+    `<b>Máximo:</b> el mayor dato es ${fmt(s.max)}.`,
+    `<b>Recorrido:</b> ${fmtInt(s.max)} − ${fmtInt(s.min)} = ${fmtInt(s.max-s.min)}.`
+  ];
+  document.getElementById('posOut').innerHTML=`<div class="solution-box"><h4>Resultados</h4>${box.map((t,i)=>`<div class="solve-step"><b>${i+1}</b><span>${t}</span></div>`).join('')}</div>`;
+}
+function newTheoryPos(){ theoryPos=makeTheoryPos(); renderTheoryPos(); }
+
+/* Recorrido */
+let theoryRec=genRecorrido();
+function renderTheoryRec(){
+  const e=theoryRec;
+  document.getElementById('recExamples').innerHTML=`<article class="theory-card"><h3>🔎 Ejemplo</h3><div class="problem">${e.question}</div><div class="theory-buttons"><button class="process-btn" onclick="showProcessRec()">Ver proceso de solución</button></div><div id="recOut"></div></article>`;
+}
+function showProcessRec(){
+  const e=theoryRec;
+  document.getElementById('recOut').innerHTML=`<div class="solution-box"><h4>Proceso de solución</h4>${e.steps.map((s,j)=>`<div class="solve-step"><b>${j+1}</b><span>${s}</span></div>`).join('')}</div>`;
+}
+function newTheoryRec(){ theoryRec=genRecorrido(); renderTheoryRec(); }
+
+/* ---------- tabs y menú de teoría ---------- */
+function showTab(tab){['theory','practice'].forEach(x=>{document.getElementById(x+'Panel').hidden=x!==tab;document.getElementById('tab'+x[0].toUpperCase()+x.slice(1)).classList.toggle('active',x===tab)});if(tab==='theory')backToTheoryMenu();window.scrollTo({top:document.querySelector('.tabs').offsetTop,behavior:'smooth'})}
+const THEORY_SHEETS={pob:'sheetPob',pos:'sheetPos',rec:'sheetRec'};
+function showTheorySheet(name){document.getElementById('teoria').hidden=true;Object.values(THEORY_SHEETS).forEach(id=>document.getElementById(id).hidden=true);document.getElementById(THEORY_SHEETS[name]).hidden=false;window.scrollTo({top:document.querySelector('.tabs').offsetTop,behavior:'smooth'})}
+function backToTheoryMenu(){document.getElementById('teoria').hidden=false;Object.values(THEORY_SHEETS).forEach(id=>document.getElementById(id).hidden=true)}
+
+/* ---------- init ---------- */
+renderTheoryPob();
+theoryPos=makeTheoryPos(); renderTheoryPos();
+renderTheoryRec();
+newPractice();
+showTab('theory');
+</script></body></html>
